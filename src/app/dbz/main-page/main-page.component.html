@@ -1,0 +1,48 @@
+<h1>Dragon Ball Z</h1>
+<hr>
+
+<div class="row">
+
+    <div>
+        <h3>Personajes</h3>
+        <hr>
+        <ul>
+            <li>{{personajes[0].nombre + " - " + personajes[0].poder}}</li>
+            <li>{{personajes[1].nombre + " - " + personajes[1].poder}}</li>
+        </ul>
+    </div>
+
+    <div class="col">
+        <h3>Agregar <small>{{nuevo.nombre}}</small></h3>
+        <hr>
+
+        <form (ngSubmit)="agregar()"> 
+<!-- De la forma tradicional 1** seria  <form (submit)="agregar($event)"> -> Recibimos el evento que viene del submit con $event y mandarlo a la funcion agregar. Lo que esta escrito ahora es gracias a la importacion del modulo FormsModule en dbz.module.ts --> 
+
+            <input 
+            type="text" 
+            placeholder="Nombre" 
+            name = "nombre"
+            [(ngModel)] = "nuevo.nombre"
+            >  <!--Si ponemos el value de esta forma, le indicamos que en el lado del componenete hay un valor que quiero enlazar al atributo value. En este caso apuntara al nuevo.nombre -->
+<!-- Las propiedades [value] e (input) han sido quitadas porque angular nos tiene una herramienta mas secilla para modificar (ngModel) y agregar valores en un formulario. Estsn eran los atributos: 
+    [value]="nuevo.nombre"
+    (input)="cambiarNombre($event)"
+NgModel nos indica que es obligatorio en atributo name por eso lo pongo.
+-->
+            <input 
+            type="number" 
+            placeholder="Poder" 
+            name = "poder"
+            [(ngModel)] = "nuevo.poder"
+            >
+
+            <button type="submit"> 
+                Agregar 
+            </button>
+
+        </form>
+        
+    </div>
+    
+</div>
